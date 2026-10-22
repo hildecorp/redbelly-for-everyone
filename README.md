@@ -10,6 +10,7 @@ friend, a parent or a business owner with no background in digital finance.
 
 | File | What it is |
 |------|------------|
+| [`index.html`](index.html) | **The entry as a web page.** All 10 posts with their images, a *Copy text* button per post, *Download image* and *Copy alt text* buttons, and the sources. Open it straight from disk, or deploy the repo as a static site |
 | [`entry/THREAD.md`](entry/THREAD.md) | **The entry.** All 10 posts, ready to copy into X, with image placement and alt text |
 | [`entry/Redbelly_Thread.docx`](entry/Redbelly_Thread.docx) / [`.pdf`](entry/Redbelly_Thread.pdf) | The same entry as a document, images inline |
 | [`entry/images/`](entry/images) | The 5 images, 1600x900 PNG (16:9, X's in-feed ratio) |
@@ -46,9 +47,9 @@ friend, a parent or a business owner with no background in digital finance.
 ## Rebuild and verify
 
 ```bash
-pip install -r requirements.txt     # Pillow, python-docx
+pip install -r tools/requirements.txt   # Pillow, python-docx
 python3 tools/build_images.py       # draws entry/images/*.png
-python3 tools/build_docs.py         # writes THREAD.md, .docx, and .pdf (PDF needs LibreOffice)
+python3 tools/build_docs.py         # writes index.html, THREAD.md, .docx, and .pdf (PDF needs LibreOffice)
 python3 tools/check_entry.py        # runs every check; exits non-zero on any problem
 ```
 
@@ -67,9 +68,20 @@ ALL CHECKS PASSED
 `tools/thread_content.py` is the single source of truth for the text. Edit a post there,
 then rerun the three commands, and every output stays in sync.
 
+## The web page
+
+`index.html` needs no build step and no server: double-click it, or open it on a phone,
+and post the thread one card at a time. The repo is also ready to deploy as a static site
+(`vercel.json` sets no framework and no build, and `.vercelignore` keeps the Python
+tools out of the deployment). The page carries `noindex`. Any deployment is still a public
+URL, though, so **don't deploy before judging ends**, because the brief fails entries that
+are posted publicly before judging.
+
 ## Repository layout
 
 ```
+index.html                  the entry as a web page (copy buttons, image downloads)
+vercel.json, .vercelignore  static-site settings
 entry/
   THREAD.md                 the entry (copy-paste ready)
   Redbelly_Thread.docx      the entry as a document
@@ -80,7 +92,8 @@ FACT_CHECK.md               sentence-to-source mapping
 tools/
   thread_content.py         post text, alt text, fact IDs
   build_images.py           draws the images
-  build_docs.py             builds THREAD.md, .docx and .pdf
+  build_docs.py             builds index.html, THREAD.md, .docx and .pdf
   check_entry.py            automated compliance checks
+  requirements.txt          Pillow, python-docx
 fonts/                      Readex Pro + OFL licence
 ```

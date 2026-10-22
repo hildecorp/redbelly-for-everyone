@@ -61,7 +61,7 @@ PRICE_TALK = [
 CREDIT = [r"@\w", r"made by", r"created by", r"designed by", r"written by",
           r"\bby me\b", r"©"]
 
-TEXT_SUFFIXES = {".md", ".py", ".txt", ".sh", ".json", ".yml", ".yaml", ".csv"}
+TEXT_SUFFIXES = {".md", ".py", ".txt", ".sh", ".json", ".yml", ".yaml", ".csv", ".html", ".css", ".js"}
 SKIP_DIRS = {".git", "__pycache__", "fonts"}  # fonts: licence text from the font authors
 
 
@@ -103,6 +103,9 @@ def all_repo_texts():
         rel = p.relative_to(ROOT)
         if p.suffix in TEXT_SUFFIXES:
             yield rel, p.read_text(encoding="utf8")
+        elif p.suffix == ".html":
+            # Drop embedded base64 images: random base64 can spell anything.
+            yield rel, re.sub(r"data:[\w/+.-]+;base64,[A-Za-z0-9+/=]+", "", p.read_text(encoding="utf8"))
         elif p.suffix == ".docx":
             yield rel, docx_text(p)
         elif p.suffix == ".pdf":

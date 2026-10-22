@@ -5,8 +5,11 @@ Output:
   entry/THREAD.md                     plain-text thread, ready to copy into X
   entry/Redbelly_Thread.docx          the same thread as a document, images inline
   entry/Redbelly_Thread.pdf           PDF of the .docx (needs LibreOffice; skipped if absent)
+  index.html                          the thread as a web page: copy buttons, image downloads
 """
 
+import html
+import json
 import shutil
 import subprocess
 import sys
@@ -131,6 +134,112 @@ def build_pdf(docx_path):
     print("wrote entry/Redbelly_Thread.pdf")
 
 
+KIT_CSS = """
+:root{--bg:#0f1c25;--card:#1b2b36;--line:#2c3e4b;--text:#ecebec;--muted:#9aa3a9;
+--red:#ff5050;--green:#3dd68c;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 8px}
+.lead{color:var(--muted);margin:0 0 28px}
+ol.steps{color:var(--muted);margin:0 0 28px;padding-left:20px}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:20px;margin:0 0 18px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;
+margin-bottom:12px}
+.num{color:var(--red);font-weight:700;font-size:18px}
+.count{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}
+.text{white-space:pre-wrap;margin:0 0 14px;font-size:17px}
+img{width:100%;height:auto;border-radius:12px;display:block;margin:0 0 10px}
+.alt{color:var(--muted);font-size:14px;margin:0 0 14px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+button,a.btn{font:inherit;font-size:15px;font-weight:600;cursor:pointer;
+border-radius:999px;padding:9px 16px;border:1px solid var(--line);
+background:#24384a;color:var(--text);text-decoration:none}
+button.primary{background:var(--red);border-color:var(--red);color:#fff}
+button.done{background:var(--green);border-color:var(--green);color:#0f1c25}
+.how{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:14px 20px;margin:0 0 22px;color:var(--muted)}
+.how summary{cursor:pointer;color:var(--text);font-weight:600}
+.sources{margin-top:36px;color:var(--muted)}
+.sources h2{color:var(--text);font-size:20px}
+.sources a{color:var(--text)}
+.sources li{margin:4px 0;overflow-wrap:anywhere}
+"""
+
+KIT_JS = """
+function copyText(btn, text){
+  const done = () => { const o = btn.textContent; btn.textContent = 'Copied';
+    btn.classList.add('done'); setTimeout(() => { btn.textContent = o;
+    btn.classList.remove('done'); }, 1500); };
+  if (navigator.clipboard && window.isSecureContext !== false) {
+    navigator.clipboard.writeText(text).then(done, () => fallback(text, done));
+  } else { fallback(text, done); }
+}
+function fallback(text, done){
+  const t = document.createElement('textarea'); t.value = text;
+  t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t);
+  t.select(); try { document.execCommand('copy'); done(); } catch (e) {}
+  t.remove();
+}
+document.querySelectorAll('[data-copy]').forEach(b =>
+  b.addEventListener('click', () => copyText(b, POSTS[+b.dataset.copy][b.dataset.field])));
+"""
+
+
+def build_site():
+    """index.html at the repo root: works opened from disk or as a static site."""
+    n = len(POSTS)
+    cards = []
+    for i, p in enumerate(POSTS):
+        parts = [
+            f'<article id="post-{i + 1}"><header><span class="num">{i + 1}/{n}</span>'
+            f'<span class="count">{x_length(p["text"])} / 280</span></header>',
+            f'<p class="text">{html.escape(p["text"])}</p>',
+        ]
+        btns = [f'<button class="primary" data-copy="{i}" data-field="text">Copy text</button>']
+        if p.get("image"):
+            src = f"entry/images/{p['image']}"
+            alt = html.escape(p["alt"])
+            parts.append(f'<img src="{src}" alt="{alt}" width="1600" height="900" loading="lazy">')
+            parts.append(f'<p class="alt"><strong>Alt text:</strong> {alt}</p>')
+            btns.append(f'<a class="btn" href="{src}" download>Download image</a>')
+            btns.append(f'<button data-copy="{i}" data-field="alt">Copy alt text</button>')
+        parts.append(f'<div class="btns">{"".join(btns)}</div></article>')
+        cards.append("".join(parts))
+    sources = "".join(f'<li><a href="{html.escape(u)}" target="_blank" rel="noopener">'
+                      f'{html.escape(name)}</a></li>' for name, u in SOURCES_SHORT)
+    data = json.dumps([{"text": p["text"], "alt": p.get("alt", "")} for p in POSTS])
+    n_img = sum(1 for p in POSTS if p.get("image"))
+    page = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Redbelly in Plain English</title>
+<meta name="description" content="A {n}-post X thread explaining Redbelly in everyday language.">
+<style>{KIT_CSS}</style></head>
+<body><main>
+<h1>{html.escape(TITLE)}</h1>
+<p class="lead">{n} posts, {n_img} images. Every fact is sourced below.</p>
+<details class="how"><summary>How to post this thread on X</summary>
+<ol>
+<li>Press <strong>Copy text</strong> and paste it into a new post (post 1) or a reply to the previous post (posts 2-{n}).</li>
+<li>Where a post has an image, press <strong>Download image</strong> and attach it to that post.</li>
+<li>On the image in X, choose <strong>Add description</strong> and paste the alt text.</li>
+</ol></details>
+{"".join(cards)}
+<section class="sources"><h2>Sources</h2><ol>{sources}</ol>
+<p>Sentence-by-sentence mapping: <a href="FACT_CHECK.md">FACT_CHECK.md</a>.
+Document versions: <a href="entry/Redbelly_Thread.pdf">PDF</a>,
+<a href="entry/Redbelly_Thread.docx">Word</a>, <a href="entry/THREAD.md">Markdown</a>.</p></section>
+</main><script>const POSTS={data};{KIT_JS}</script></body></html>
+"""
+    (ROOT / "index.html").write_text(page, encoding="utf8")
+    print("wrote index.html")
+
+
 if __name__ == "__main__":
     build_markdown()
+    build_site()
     build_pdf(build_docx())
