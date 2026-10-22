@@ -70,7 +70,13 @@
     if (set) return set;
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   }
-  function label() { themeBtn.textContent = current() === "dark" ? "Light theme" : "Dark theme"; }
+  function label() {
+    var light = current() === "light";
+    var text = light ? "Switch to dark theme" : "Switch to light theme";
+    themeBtn.classList.toggle("is-light", light);
+    themeBtn.setAttribute("aria-label", text);
+    themeBtn.setAttribute("title", text);
+  }
   try {
     var saved = localStorage.getItem("rb-theme");
     if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
@@ -81,6 +87,17 @@
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("rb-theme", next); } catch (e) { /* ignore */ }
     label();
+  });
+
+  // Back to top: shows once the reader has scrolled past the hero.
+  var toTop = document.getElementById("to-top");
+  function onScroll() { toTop.classList.toggle("show", window.scrollY > 600); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  toTop.addEventListener("click", function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.querySelector(".logo").focus({ preventScroll: true });
   });
 
   // Highlight the contents entry for the section in view.

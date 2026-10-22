@@ -225,7 +225,7 @@ def build_site():
         <a class="navlink" href="#images">Images</a>
         <a class="navlink" href="#sources">Sources</a>
         <a class="navlink" href="#facts">Fact check</a>
-        <button class="theme-btn" id="theme-btn" type="button">Light theme</button>
+        <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light theme" title="Switch to light theme"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
       </nav>
     </div>
     <p class="kicker caps" id="top">Redbelly DAO Task Board, {TASK}</p>
@@ -326,6 +326,7 @@ def build_site():
     <span>Redbelly DAO Task Board, {TASK}. Facts last verified {LAST_VERIFIED_LONG}.</span>
   </div>
 </footer>
+<a class="to-top" id="to-top" href="#top" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg></a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script type="application/json" id="thread-data">{data}</script>
 <script src="assets/site.js"></script>

@@ -78,8 +78,17 @@ h1, h2, h3 { margin: 0; letter-spacing: -0.01em; }
 .topbar nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
 .topbar nav a { color: #c2ced6; text-decoration: none; font-weight: 600; font-size: 14px; padding: 8px 12px; border-radius: 4px; white-space: nowrap; }
 .topbar nav a:hover { color: #ffb3ae; background: rgba(12, 19, 23, 0.35); }
-.theme-btn { font: 600 14px var(--sans); color: #f1f5f8; background: transparent; border: 1px solid #34444f; border-radius: 4px; padding: 7px 12px; cursor: pointer; white-space: nowrap; margin-left: 8px; }
+.theme-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: #f1f5f8; background: transparent; border: 1px solid #34444f; border-radius: 4px; cursor: pointer; margin-left: 8px; padding: 0; }
 .theme-btn:hover { border-color: #ffb3ae; color: #ffb3ae; }
+.theme-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.theme-btn .i-moon { display: none; }
+.theme-btn.is-light .i-sun { display: none; }
+.theme-btn.is-light .i-moon { display: block; }
+.to-top { position: fixed; right: 24px; bottom: 24px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--brand); color: #fff; border-radius: 4px; text-decoration: none; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 150ms, transform 150ms, background-color 150ms; z-index: 5; }
+.to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.to-top:hover { background: var(--brand-hover); color: #fff; }
+.to-top svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 680px) { .to-top { right: 16px; bottom: 16px; width: 44px; height: 44px; } }
 .hero .kicker { color: #8fa1ad; margin: 0 0 12px; }
 .hero h1 { font-size: 48px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px; max-width: 18ch; }
 .hero .lead { font-size: 18px; line-height: 1.55; color: #c2ced6; max-width: 62ch; margin: 0 0 20px; }
