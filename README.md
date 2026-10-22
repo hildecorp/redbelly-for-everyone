@@ -1,99 +1,115 @@
-# Redbelly for Everyone
+# Redbelly in plain English
 
-An entry for the challenge **"Explain Redbelly Without Saying [the B-word]"**: a 10-post X
-thread that explains what Redbelly does and why it matters, in everyday language, for a
-friend, a parent or a business owner with no background in digital finance.
+An entry for Redbelly DAO Task Board **TASK-33: Explain Redbelly without saying the B-word.**
 
-> **Format chosen:** X thread (10 posts, 5 original images), submitted as text in a document.
+A 10-post X thread that explains what Redbelly does and why it matters, for a friend, a
+parent or a business owner. No jargon, no price talk, and every fact traced to a public
+source. Facts last verified 22 October 2026.
 
-## What to read first
+**Format chosen:** X thread, 10 posts, 5 original images, submitted as a document.
+
+## Start here
 
 | File | What it is |
 |------|------------|
-| [`index.html`](index.html) | **The entry as a web page.** All 10 posts with their images, a *Copy text* button per post, *Download image* and *Copy alt text* buttons, and the sources. Open it straight from disk, or deploy the repo as a static site |
-| [`entry/THREAD.md`](entry/THREAD.md) | **The entry.** All 10 posts, ready to copy into X, with image placement and alt text |
-| [`entry/Redbelly_Thread.docx`](entry/Redbelly_Thread.docx) / [`.pdf`](entry/Redbelly_Thread.pdf) | The same entry as a document, images inline |
-| [`entry/images/`](entry/images) | The 5 images, 1600x900 PNG (16:9, X's in-feed ratio) |
-| [`SOURCES.md`](SOURCES.md) | **Deliverable 2:** the list of sources used for the facts |
-| [`FACT_CHECK.md`](FACT_CHECK.md) | Every factual sentence in the thread, mapped to the exact source wording |
+| [`index.html`](index.html) | The entry as a web page. Every post with a copy button, every image with a download button and its alt text, the brief checklist, the sources and the fact check. Opens straight from disk. |
+| [`entry/Redbelly_Thread.pdf`](entry/Redbelly_Thread.pdf) | The entry as an A4 document: cover, the thread, brief checklist, sources, fact check. |
+| [`entry/Redbelly_Thread.docx`](entry/Redbelly_Thread.docx) | The same document as a Word file, with the brand fonts embedded. |
+| [`entry/images/`](entry/images) | The 5 thread images, 1600 x 900 PNG. Also as one zip: [`entry/redbelly-thread-images.zip`](entry/redbelly-thread-images.zip), with an alt text file. |
+| [`entry/THREAD.md`](entry/THREAD.md) | The thread as plain text. |
+| [`SOURCES.md`](SOURCES.md) | **Deliverable 2:** the sources used for the facts. |
+| [`FACT_CHECK.md`](FACT_CHECK.md) | Every claim in the thread, mapped to the exact wording in its source. |
 
 ## The thread at a glance
 
-| # | Idea | Everyday hook |
-|---|------|---------------|
-| 1 | Money moves in seconds, ownership still moves in days | "allow 3-5 business days" |
-| 2 | What Redbelly is: one shared, public record of who owns what | everyone reads the same copy |
-| 3 | Where it came from: University of Sydney research with CSIRO, live since Nov 2024 | "not dreamt up in a garage" |
+| # | Post | Everyday picture |
+|---|------|------------------|
+| 1 | Money moves fast, ownership doesn't | "allow 3-5 business days" |
+| 2 | What Redbelly is | one shared, up-to-date record |
+| 3 | Where it came from | not dreamt up in a garage |
 | 4 | Tokenisation | cutting a pizza into slices |
-| 5 | Eligibility checked at the moment of trade | a bouncer built into the door |
-| 6 | Reusable digital ID with zero-knowledge proofs | not handing over your passport 100 times |
-| 7 | Final once confirmed | cash, not a cheque |
-| 8 | The RBA's Project Acacia: Redbelly was one of three networks for the trial digital money | a company bond bought with it |
-| 9 | Loan repayment, closure and collateral release in one step | 3 steps become 1 |
-| 10 | Why it matters, in one line | the plumbing behind money and ownership |
+| 5 | The rules travel with the slice | a bouncer built into the door |
+| 6 | One private, reusable ID | not handing over your passport 100 times |
+| 7 | Done means done | cash, not a cheque |
+| 8 | Tested by Australia's central bank | a company bond bought with trial digital money |
+| 9 | Three steps become one | paying off a loan |
+| 10 | Why it matters | the plumbing behind money and ownership |
 
-## How the brief's rules are met
+## How the brief is met
 
-| Rule | How it is met | How it is checked |
-|------|---------------|-------------------|
-| No B-word or any stand-in for it | Never used anywhere: posts, alt text, images, documents, file names, or this repo's own code | `tools/check_entry.py` scans **every file in the repo** plus all text drawn on the images; the banned list is stored ROT13-encoded so even the checker doesn't contain the words |
-| Every fact correct | 11 facts, each traced to public Redbelly, Tokeniser or RBA material; Project Acacia claims come from the RBA's own final report | `FACT_CHECK.md`; the checker fails if a post cites a fact ID that isn't documented |
-| No price talk or investment advice | No token, price, returns or "buy" language | Checker scans posts, alt text and image text for price/advice words |
-| No unlicensed media | All images drawn from scratch in code (no stock, no logos, no AI images). Font: Readex Pro (Redbelly's brand font), SIL Open Font License, licence in `fonts/OFL.txt`. No music or video | `tools/build_images.py` rebuilds every image from nothing |
-| No personal credit | No names, handles, signatures or "made by" lines in the entry, the images or the document metadata | Checker scans for handles and "made by"-style lines |
-| Fits X | Every post at or under 280 characters, weighted as X counts them (emoji = 2, links = 23) | Checker prints each post's length |
-| Not posted before judging | Nothing has been posted | Keep this repository **private** until the DAO announces the winner |
+| Failure condition | How this entry avoids it | How it is checked |
+|-------------------|--------------------------|-------------------|
+| The B-word or a stand-in | Not used in any post, alt text, image, document, file name or line of code. | `tools/check_entry.py` scans every file, the PDF and Word text, and the image text. The banned list is stored ROT13-encoded, so the checker itself is clean. |
+| A factual error | 11 facts, each traced to Redbelly, Tokeniser or RBA material. Project Acacia claims rely on the RBA's own final report, not on Redbelly's description of it. | `FACT_CHECK.md`. The checker fails if a post cites a fact that has no source behind it. |
+| Posted before judging | Nothing has been posted. | Keep this repository private and do not deploy the site until judging ends. |
+| Price talk or advice | No tokens, prices, returns or buying language. | The checker scans posts, alt text and image text. |
+| Unlicensed media | Images drawn from scratch as HTML and rendered to PNG. Fonts are Be Vietnam Pro and JetBrains Mono (SIL Open Font License, in `assets/fonts`). Logo from the DAO Task Board brand kit. No music, stock art or AI images. | The image source is `tools/templates/images.html`. |
+| Unchecked AI text | Every sentence was checked against its source. Company figures are labelled as the company's own. | `FACT_CHECK.md` |
+| Personal credit | No names, handles, signatures or made-by lines anywhere in the entry or document metadata. | The checker scans for handles and credit lines. |
+
+## Brand
+
+Built on the [Redbelly DAO Task Board brand kit](https://taskboard.redbellydao.network/brand):
+the tokens from its `tokens.css`, Be Vietnam Pro for all text and JetBrains Mono for
+numbers and labels only, `#EF5350` as the one accent, 4px and 8px radii, tonal depth with
+1px borders, a dark default with a light theme, and a steel hero band in both themes. The
+copy follows its voice rules: plain hyphens only, no em dashes or en dashes, no emoji.
+Every image carries a dated "last verified" line and keeps its text inside a 5% safe margin.
 
 ## Rebuild and verify
 
+All outputs are already built and committed. To change a post, edit
+`tools/content.py` and rebuild:
+
 ```bash
-pip install -r tools/requirements.txt   # Pillow, python-docx
-python3 tools/build_images.py       # draws entry/images/*.png
-python3 tools/build_docs.py         # writes index.html, THREAD.md, .docx, and .pdf (PDF needs LibreOffice)
-python3 tools/check_entry.py        # runs every check; exits non-zero on any problem
+pip install -r tools/requirements.txt
+python3 -m playwright install chromium       # or set CHROMIUM_PATH to an existing Chrome
+python3 tools/build.py                       # images, website, PDF, Word file, Markdown
+python3 tools/check_entry.py                 # every check; exits non-zero on any problem
 ```
 
 Expected checker output:
 
 ```
-PASS self-test: detectors catch planted banned words, price talk and handles
-PASS banned-term scan: ... files + all on-image text
-PASS price-talk and personal-credit scan of posts, alt text and image text
-PASS post lengths: 1:264, 2:279, 3:219, 4:266, 5:274, 6:279, 7:196, 8:279, 9:277, 10:276
-PASS every fact ID cited by a post is documented in FACT_CHECK.md
+PASS self-test: detectors catch planted banned words, dashes, emoji, price talk and handles
+PASS banned-term and dash scan: ... files, including the PDF, the Word file and file names
+PASS posts, alt text and image text: no emoji, jargon, price talk, advice or credit
+PASS post lengths: 1:269, 2:279, 3:219, 4:263, 5:274, 6:279, 7:196, 8:279, 9:277, 10:276
+PASS 5 images present, 1600x900 PNG, each with alt text
+PASS 11 facts, 8 sources, every link between them resolves
+PASS website: ... local links and every in-page anchor resolve, posts match the content
+PASS all 5 images carry 'Last verified 22 Oct 2026'
 
 ALL CHECKS PASSED
 ```
 
-`tools/thread_content.py` is the single source of truth for the text. Edit a post there,
-then rerun the three commands, and every output stays in sync.
+The PDF check needs `pdftotext` (package `poppler-utils`).
 
-## The web page
+## Deploying the website
 
-`index.html` needs no build step and no server: double-click it, or open it on a phone,
-and post the thread one card at a time. The repo is also ready to deploy as a static site
-(`vercel.json` sets no framework and no build, and `.vercelignore` keeps the Python
-tools out of the deployment). The page carries `noindex`. Any deployment is still a public
-URL, though, so **don't deploy before judging ends**, because the brief fails entries that
-are posted publicly before judging.
+The site is static: `index.html` plus `assets/` and `entry/`. `vercel.json` sets no
+framework and no build step, and `.vercelignore` keeps `tools/` out of the deployment.
+Any deployment is a public link, so wait until judging ends.
 
-## Repository layout
+## Layout
 
 ```
-index.html                  the entry as a web page (copy buttons, image downloads)
-vercel.json, .vercelignore  static-site settings
+index.html                    the website
+assets/
+  site.css, site.js           styles (DAO brand tokens) and copy buttons
+  fonts/                      Be Vietnam Pro, JetBrains Mono, licences
+  brand/                      DAO logo files from the brand kit
 entry/
-  THREAD.md                 the entry (copy-paste ready)
-  Redbelly_Thread.docx      the entry as a document
-  Redbelly_Thread.pdf       the entry as a PDF
-  images/01..05-*.png       thread images
-SOURCES.md                  sources (deliverable 2)
-FACT_CHECK.md               sentence-to-source mapping
+  Redbelly_Thread.pdf/.docx   the entry as a document
+  THREAD.md                   the thread as text
+  images/                     the 5 PNGs
+  redbelly-thread-images.zip  the PNGs plus alt text
+SOURCES.md                    sources (deliverable 2)
+FACT_CHECK.md                 claim-by-claim source mapping
 tools/
-  thread_content.py         post text, alt text, fact IDs
-  build_images.py           draws the images
-  build_docs.py             builds index.html, THREAD.md, .docx and .pdf
-  check_entry.py            automated compliance checks
-  requirements.txt          Pillow, python-docx
-fonts/                      Readex Pro + OFL licence
+  content.py                  posts, sources and facts: the single source of truth
+  templates/images.html       editable source for the images
+  templates/print.html        generated source for the PDF
+  build.py, build_docx.py     build everything
+  check_entry.py              automated checks
 ```

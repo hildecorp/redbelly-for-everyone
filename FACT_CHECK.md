@@ -1,112 +1,104 @@
 # Fact check
 
-Each fact ID below is cited by one or more posts (see `facts` in
-`tools/thread_content.py`), and `tools/check_entry.py` fails if a post cites an ID
-that is missing here. Quotes are copied from the sources in `SOURCES.md`, as they read
-on 22 October 2026. "[...]" marks a cut, used where the original sentence goes on to
-other points.
+Each claim the thread makes, the posts that make it, and the source wording behind it. Quotes were copied from the sources in [`SOURCES.md`](SOURCES.md) on 22 October 2026. "[...]" marks a cut where the original sentence goes on to other points. Page numbers for S6 are the printed page numbers of the report.
 
----
+## F1: An Australian network for real-world assets
 
-## F1: Redbelly is an Australian network for real-world assets
-**Thread:** posts 1, 2, 10. "Redbelly is an Australian network built to fix that." "built
-for real-world things like bonds, loans, property and carbon credits."
+**Thread says** (posts 1, 2, 10): Redbelly is an Australian network built for real-world things like bonds, loans, property and carbon credits.
 
-- S8 (Tokeniser): "Tokeniser operates on Redbelly Network, Australia's public digital token infrastructure"
-- S1 (home page) lists the asset types it supports: "Treasuries & Bonds", "Private Credit", "Carbon Credits", "Derivatives & Commodities", "Insurance", "Real Estate".
-- S1 footer: "Redbelly Network Pty Ltd Australia 304/74 Pitt St. Sydney NSW 2000"
-- Post 1's "allow 3-5 business days" is the everyday phrase people know from bank
-  transfers, used as a hook. It is not presented as a measured fact about any market.
+- **S8**, Tokeniser home page: "Tokeniser operates on Redbelly Network, Australia's public digital token infrastructure"
+- **S1**, Redbelly Network home page: "Asset types listed: Treasuries & Bonds, Private Credit, Carbon Credits, Derivatives & Commodities, Insurance, Real Estate"
+- **S1**, Redbelly Network home page: "Redbelly Network Pty Ltd Australia 304/74 Pitt St. Sydney NSW 2000"
 
-## F2: One shared, up-to-date record of who owns what
-**Thread:** posts 2, 4. "Businesses, fund managers and investors all look at the same
-up-to-date record, instead of each keeping their own copy." "a public digital network"
+*Note: "Allow 3-5 business days" in post 1 is the everyday phrase people know from bank transfers, used as a hook. It is not presented as a measured fact about any market.*
 
-- S1: "Establish digital registries as a shared source of truth across issuers, managers, and investors."
-- S6, printed p. 12: lists "Redbelly Network (public)" among the platforms used in the pilots.
-- S8: "Australia's public digital token infrastructure"
+## F2: One shared, up-to-date record
 
-## F3: Where it came from, and when it went live
-**Thread:** post 3. "grew out of research at the University of Sydney, working with CSIRO,
-Australia's national science agency. Work started in 2016. The public network went live
-in November 2024."
+**Thread says** (posts 2, 4): A public network where businesses, fund managers and investors all look at the same up-to-date record.
 
-- S8: "Tokeniser is a Redbelly Network project: born from research at the University of Sydney and Australian Government Science Agency: CSIRO"
-- S2 timeline: "2016 December Work Started On The Redbelly [...]"
-- S2 timeline: "2021 June Block8, CSIRO and University of Sydney create Redbelly Network as a joint venture"
-- S2 timeline: "2024 November Mainnet Launch" (the live public network, as opposed to its test networks)
+- **S1**, Redbelly Network home page: "Establish digital registries as a shared source of truth across issuers, managers, and investors."
+- **S6**, Project Acacia final report, May 2026: "p. 12 lists "Redbelly Network (public)" among the platforms used in the pilots."
+- **S8**, Tokeniser home page: "Australia's public digital token infrastructure"
 
-## F4: "Tokenisation" means cutting an asset into digital slices with clear owners
-**Thread:** post 4. "lets the owner cut it into digital slices that can be issued, held and
-traded, each one with a clear owner on record."
+## F3: Origins and launch date
 
-- S8: "[...] financial products and services as digital tokens, and lets you program the rules of the asset. Holders gain fractional ownership, direct custody, atomic settlement, and 24/7 secondary trading"
-- S3: Redbelly describes its offering as infrastructure for "issuing, managing, and distributing digital financial assets".
-- The pizza is an analogy, not a claim.
+**Thread says** (post 3): Grew out of research at the University of Sydney, working with CSIRO. Work started in 2016. The public network went live in November 2024.
 
-## F5: Eligibility is checked at the moment of the trade
-**Thread:** posts 5, 10. "Many investments are only legally open to certain buyers. On
-Redbelly, identity and eligibility are checked at the exact moment of the trade."
+- **S8**, Tokeniser home page: "Tokeniser is a Redbelly Network project: born from research at the University of Sydney and Australian Government Science Agency: CSIRO"
+- **S2**, Redbelly About us page and timeline: "2016 December Work Started On The Redbelly [...]"
+- **S2**, Redbelly About us page and timeline: "2021 June Block8, CSIRO and University of Sydney create Redbelly Network as a joint venture"
+- **S2**, Redbelly About us page and timeline: "2024 November Mainnet Launch"
 
-- S3: "[...] verifiable credentials enable tokenised investment products with defined investor eligibility, enforced at the point of trade."
-- S3: "[...] programmatically at the point of issuance and trade"
-- S8 (why some buyers are excluded): "Tokeniser programs eligibility into every asset at the protocol level: identity, KYC, AML, CTF, wholesale and sophisticated investor tests, and TMD."
-- The bouncer is an analogy, not a claim.
+*Note: "Mainnet" is the live public network, as opposed to its test networks.*
 
-## F6: Reusable digital ID, with zero-knowledge proofs for privacy
-**Thread:** posts 6, 10. "Users are verified with a reusable digital ID, so they skip
-repeating the same checks on every platform. Clever maths ("zero-knowledge proofs") lets
-you prove you passed the check without sharing all your personal details."
+## F4: Tokenisation means digital slices with clear owners
 
-- S4: "All users are verified using digital identities and zero-knowledge [proofs] (ZKP), ensuring compliance without compromising personal privacy."
-- S4: "With Redbelly, users avoid repetitive KYC checks across multiple platforms."
-- S3: "Reusable client identity and KYC credentials streamline onboarding and reduce duplication"
-- S2 timeline: "2024 November W3C ZKP Verifiable Credentials inc National IDs released"
-- "Without sharing all your personal details" is the plain-English meaning of
-  "without compromising personal privacy" (S4).
+**Thread says** (post 4): The owner can cut a big asset into digital slices that can be issued, held and traded, each with a clear owner on record.
 
-## F7: Final once confirmed, with no "pending"
-**Thread:** posts 7, 10. "No "pending" for days. Once a transaction is confirmed on
-Redbelly, it's final and can't be reversed."
+- **S8**, Tokeniser home page: "[...] financial products and services as digital tokens, and lets you program the rules of the asset. Holders gain fractional ownership, direct custody, atomic settlement, and 24/7 secondary trading"
+- **S1**, Redbelly Network home page: "Redbelly provides the infrastructure to issue, manage, and distribute regulated digital financial assets to a global investor base."
 
-- S3: "Finality - Deterministic finality ensures transactions are confirmed once and cannot be reversed, providing certainty for financial markets"
-- S4: "Redbelly Network processes transactions with instant finality, meaning no delays, no pending states [...]"
-- Cash versus cheque is an analogy, not a claim.
+*Note: The pizza is an analogy, not a claim.*
 
-## F8: Project Acacia, and Redbelly as one of three networks for the RBA's trial digital money
-**Thread:** post 8. "In Project Acacia, Australia's central bank (the RBA) tested digital
-money in these markets. Redbelly was one of only three networks used for the RBA's trial
-digital money."
+## F5: Eligibility checked at the moment of trade
 
-- S7: the RBA and the Digital Finance Cooperative Research Centre released the Project Acacia
-  findings on 18 May 2026. 20 wholesale tokenised asset market use cases were tested.
-- S6, title: "Project Acacia: Exploring the Role of Digital Money in Wholesale Tokenised Asset Markets"
-- S6, printed p. 13: "Use cases used three of the short-listed [...] platforms for their experimentation with pilot wCBDC: Australian Payments Plus's (AP+) HashSphere instance [...], Canvas Connect [...], and Redbelly Network [...]."
-- "wCBDC" is wholesale central bank digital currency: digital money issued by the RBA
-  for banks and institutions, not for the public. The thread calls it "the RBA's trial
-  digital money", which is accurate and readable.
+**Thread says** (posts 5, 10): Many investments are only legally open to certain buyers. On Redbelly, identity and eligibility are checked at the moment of the trade.
 
-## F9: A company bond bought with that money, both on Redbelly
-**Thread:** post 8. "In one pilot, a company bond was bought with that money, both on
-Redbelly."
+- **S3**, Redbelly asset tokenisation page: "[...] verifiable credentials enable tokenised investment products with defined investor eligibility, enforced at the point of trade."
+- **S3**, Redbelly asset tokenisation page: "[...] programmatically at the point of issuance and trade"
+- **S8**, Tokeniser home page: "Tokeniser programs eligibility into every asset at the protocol level: identity, KYC, AML, CTF, wholesale and sophisticated investor tests, and TMD."
 
-- S6, Appendix 1, printed p. 57: "Australian Bond Exchange piloted secondary market transactions involving the purchase of a tokenised corporate bond digital twin using wCBDC as the settlement asset. Both the tokenised bond and the wCBDC were issued on to the same network." Network listed for this use case: "Redbelly Network".
+*Note: The bouncer is an analogy, not a claim.*
 
-## F10: Paying off a loan, 3 steps done as 1
-**Thread:** post 9 and image 4. "Paying off a loan usually takes 3 steps in separate
-systems: payment, loan closed, then the collateral (what backs the loan) handed back. On
-Redbelly, all 3 happened in a single step, so the collateral was free again instantly."
+## F6: Reusable digital ID with zero-knowledge proofs
 
-- S6, Box C, printed pp. 27-28: "In traditional finance, the lender records the loan in its loan system, and the collateral in its collateral management system. When the customer repays the loan (in full) the following steps occur sequentially" (payment posted, loan closed, collateral returned).
-- S6, same box: "[...] the loan repayment, loan discharge and collateral release functions were composed into a single atomic transaction. As a result, collateral could be released instantly and made immediately available for reuse [...]"
-- S6, Appendix 1, printed p. 61: "NotCentralised Collateralised Loans (pilot)". Network listed for this use case: "Redbelly Network".
+**Thread says** (posts 6, 10): Users are verified with a reusable digital ID, so they skip repeating the same checks on every platform. Zero-knowledge proofs let you prove you passed without sharing all your details.
 
-## F11: Tokeniser, built on Redbelly, and its reported figures
-**Thread:** post 10. "Tokeniser, a platform built on Redbelly, reports A$1.2B issued for
-160+ companies and funds."
+- **S4**, What sets Redbelly Network apart (article): "All users are verified using digital identities and zero-knowledge [proofs] (ZKP), ensuring compliance without compromising personal privacy."
+- **S4**, What sets Redbelly Network apart (article): "With Redbelly, users avoid repetitive KYC checks across multiple platforms."
+- **S3**, Redbelly asset tokenisation page: "Reusable client identity and KYC credentials streamline onboarding and reduce duplication"
+- **S2**, Redbelly About us page and timeline: "2024 November W3C ZKP Verifiable Credentials inc National IDs released"
 
-- S8: "Tokeniser operates on Redbelly Network [...]"
-- S8: "A$1.2B issued equity & funds", "160+ companies and funds"
-- These are Tokeniser's own figures, so the thread says "reports". Tokeniser also shows
-  up in the RBA report (S6, printed pp. 59-60): the Macropod fund pilot on Redbelly
-  handled "registration and distribution [...] through the Tokeniser platform".
+*Note: "Without sharing all your personal details" is the plain-English meaning of "without compromising personal privacy" (S4).*
+
+## F7: Final once confirmed
+
+**Thread says** (posts 7, 10): No "pending" for days. Once a transaction is confirmed on Redbelly, it's final and can't be reversed.
+
+- **S3**, Redbelly asset tokenisation page: "Deterministic finality ensures transactions are confirmed once and cannot be reversed, providing certainty for financial markets"
+- **S4**, What sets Redbelly Network apart (article): "Redbelly Network processes transactions with instant finality, meaning no delays, no pending states [...]"
+
+*Note: Cash versus a cheque is an analogy, not a claim.*
+
+## F8: One of three networks for the RBA's trial digital money
+
+**Thread says** (post 8): In Project Acacia, the RBA tested digital money in these markets. Redbelly was one of only three networks used for the RBA's trial digital money.
+
+- **S7**, RBA and DFCRC release findings from Project Acacia (media release, 18 May 2026): "The RBA and the DFCRC released the Project Acacia findings on 18 May 2026. 20 wholesale tokenised asset market use cases were tested."
+- **S6**, Project Acacia final report, May 2026: "Use cases used three of the short-listed [...] platforms for their experimentation with pilot wCBDC: Australian Payments Plus's (AP+) HashSphere instance [...], Canvas Connect [...], and Redbelly Network [...]. (p. 13)"
+
+*Note: wCBDC is wholesale central bank digital currency: digital money issued by the RBA for banks and institutions, not the public. The thread calls it "the RBA's trial digital money".*
+
+## F9: A company bond bought with that money
+
+**Thread says** (post 8): In one pilot, a company bond was bought with that money, both on Redbelly.
+
+- **S6**, Project Acacia final report, May 2026: "Australian Bond Exchange piloted secondary market transactions involving the purchase of a tokenised corporate bond digital twin using wCBDC as the settlement asset. Both the tokenised bond and the wCBDC were issued on to the same network. Network listed: Redbelly Network. (p. 57)"
+
+## F10: Paying off a loan: 3 steps become 1
+
+**Thread says** (post 9): Paying off a loan usually takes 3 steps in separate systems. In the pilot on Redbelly, all 3 happened in a single step, so the collateral was free again instantly.
+
+- **S6**, Project Acacia final report, May 2026: "In traditional finance, the lender records the loan in its loan system, and the collateral in its collateral management system. When the customer repays the loan (in full) the following steps occur sequentially [...] (pp. 27-28)"
+- **S6**, Project Acacia final report, May 2026: "[...] the loan repayment, loan discharge and collateral release functions were composed into a single atomic transaction. As a result, collateral could be released instantly and made immediately available for reuse [...] (p. 28)"
+- **S6**, Project Acacia final report, May 2026: "NotCentralised Collateralised Loans (pilot). Network listed: Redbelly Network. (p. 61)"
+
+## F11: Tokeniser and its reported figures
+
+**Thread says** (post 10): Tokeniser, a platform built on Redbelly, reports A$1.2B issued for 160+ companies and funds.
+
+- **S8**, Tokeniser home page: "Tokeniser operates on Redbelly Network [...]"
+- **S8**, Tokeniser home page: "A$1.2B issued equity & funds; 160+ companies and funds"
+- **S6**, Project Acacia final report, May 2026: "The Macropod fund pilot on Redbelly handled registration and distribution through the Tokeniser platform. (pp. 59-60)"
+
+*Note: These are Tokeniser's own figures, so the thread says "reports".*
